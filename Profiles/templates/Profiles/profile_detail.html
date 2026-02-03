@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Your Profile</title>
+</head>
+<body>
+    <h1>Your profile</h1>
+    <p><strong>Username:</strong> {{ request.user.username }}</p>
+    <p><strong>Email:</strong> {{ request.user.email }}</p>
+    <p><strong>Full name:</strong> {{ request.user.profile.full_name }}</p>
+    <p><strong>Phone:</strong> {{ request.user.profile.phone }}</p>
+    <p><strong>About:</strong> {{ request.user.profile.about }}</p>
+    <p><strong>Location:</strong> {{ request.user.profile.location }}</p>
+    <p><strong>Website:</strong> {{ request.user.profile.website }}</p>
+
+    {% if request.user.profile.image %}
+        <img src="{{ request.user.profile.image.url }}" alt="Profile image" width="200">
+    {% endif %}
+
+    <p>
+        <a href="{% url 'profile_edit' %}">Edit profile</a>
+        | <a href="{% url 'logout' %}">Logout</a>
+    </p>
+</body>
+</html>
